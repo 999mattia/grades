@@ -17,11 +17,6 @@ func main() {
 	r.POST("/signup", controllers.SignUp)
 	r.POST("/login", controllers.Login)
 
-	r.GET("/auth", middleware.Auth, func(c *gin.Context) {
-		user, _ := c.Get("user")
-		c.JSON(200, gin.H{"user": user})
-	})
-
 	r.GET("/user/:id", middleware.Auth, controllers.GetUserById)
 
 	r.Run()
