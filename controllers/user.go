@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"net/http"
 	"time"
 
 	"github.com/999mattia/grades/db"
@@ -79,4 +80,8 @@ func Login(c *gin.Context) {
 	}
 
 	c.JSON(200, gin.H{"token": tokenString})
+}
+
+func Validate(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{"message": "Valid"})
 }
