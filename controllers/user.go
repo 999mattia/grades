@@ -48,7 +48,7 @@ func GetUserById(c *gin.Context) {
 			}
 		}
 
-		modulesDTO = append(modulesDTO, models.ModuleDTO{Id: module.ID, Name: module.Name, Grades: gradesForModule})
+		modulesDTO = append(modulesDTO, models.ModuleDTO{Id: module.ID, Name: module.Name, Grades: gradesForModule, Semester: module.Semester})
 	}
 
 	userDTO := models.UserDTO{Id: user.ID, Name: user.Name, Modules: modulesDTO}

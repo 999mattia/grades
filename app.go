@@ -19,5 +19,7 @@ func main() {
 
 	r.GET("/user/:id", middleware.Auth, controllers.GetUserById)
 
+	r.POST("/module", middleware.Auth, controllers.CreateModule)
+
 	r.Run()
 }
