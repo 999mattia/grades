@@ -21,8 +21,8 @@ func main() {
 
 	r.POST("/api/module", middleware.Auth, controllers.CreateModule)
 
-	r.Static("/assets", "./wwwroot/assets")
-	r.StaticFile("/", "./wwwroot/index.html")
+	r.Static("/assets", "./client/dist/assets")
+	r.StaticFile("/", "./client/dist/index.html")
 
 	r.Run()
 }

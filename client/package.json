@@ -6,8 +6,7 @@
     "start": "vite",
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview",
-    "postbuild": "cp dist/* ../wwwroot/ -r"
+    "serve": "vite preview"
   },
   "license": "MIT",
   "devDependencies": {
