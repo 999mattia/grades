@@ -14,12 +14,15 @@ func main() {
 
 	r := gin.Default()
 
-	r.POST("/signup", controllers.SignUp)
-	r.POST("/login", controllers.Login)
+	r.POST("/api/signup", controllers.SignUp)
+	r.POST("/api/login", controllers.Login)
 
-	r.GET("/user/:id", middleware.Auth, controllers.GetUserById)
+	r.GET("/api/user/:id", middleware.Auth, controllers.GetUserById)
 
-	r.POST("/module", middleware.Auth, controllers.CreateModule)
+	r.POST("/api/module", middleware.Auth, controllers.CreateModule)
+
+	r.Static("/assets", "./wwwroot/assets")
+	r.StaticFile("/", "./wwwroot/index.html")
 
 	r.Run()
 }
