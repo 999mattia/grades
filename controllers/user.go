@@ -32,5 +32,26 @@ func GetUserById(c *gin.Context) {
 	var grades []models.Grade
 	db.DB.Where("user_id = ?", user.ID).Find(&grades)
 
-	c.JSON(200, gin.H{"user": user, "modules": modules, "grades": grades})
+	var gradesDTO []models.GradeDTO
+	var modulesDTO []models.ModuleDTO
+
+	for _, grade := range grades {
+		gradesDTO = append(gradesDTO, models.GradeDTO{Id: grade.ID, Name: grade.Name, Grade: grade.Grade, ModuleId: grade.ModuleId})
+	}
+
+	for _, module := range modules {
+		var gradesForModule []models.GradeDTO
+
+		for _, grade := range gradesDTO {
+			if grade.ModuleId == module.ID {
+				gradesForModule = append(gradesForModule, grade)
+			}
+		}
+
+		modulesDTO = append(modulesDTO, models.ModuleDTO{Id: module.ID, Name: module.Name, Grades: gradesForModule})
+	}
+
+	userDTO := models.UserDTO{Id: user.ID, Name: user.Name, Modules: modulesDTO}
+
+	c.JSON(200, userDTO)
 }

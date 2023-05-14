@@ -7,3 +7,9 @@ type User struct {
 	Name     string `gorm:"unique"`
 	Password string
 }
+
+type UserDTO struct {
+	Id      uint
+	Name    string
+	Modules []ModuleDTO
+}

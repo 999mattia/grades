@@ -6,6 +6,13 @@ type Grade struct {
 	gorm.Model
 	Name     string
 	Grade    float32
-	ModuleId int
-	UserId   int
+	ModuleId uint
+	UserId   uint
+}
+
+type GradeDTO struct {
+	Id       uint
+	Name     string
+	Grade    float32
+	ModuleId uint
 }
