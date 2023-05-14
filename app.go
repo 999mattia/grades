@@ -22,5 +22,7 @@ func main() {
 		c.JSON(200, gin.H{"user": user})
 	})
 
+	r.GET("/user/:id", middleware.Auth, controllers.GetUserById)
+
 	r.Run()
 }

@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"net/http"
+	"strconv"
 	"time"
 
 	"github.com/999mattia/grades/db"
@@ -82,6 +82,29 @@ func Login(c *gin.Context) {
 	c.JSON(200, gin.H{"token": tokenString})
 }
 
-func Validate(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{"message": "Valid"})
+func GetUserById(c *gin.Context) {
+	requestedId := c.Param("id")
+	requestedIdInt, _ := strconv.Atoi(requestedId)
+	tokenUser, _ := c.Get("user")
+
+	if tokenUser.(models.User).ID != uint(requestedIdInt) {
+		c.JSON(401, gin.H{"error": "Unauthorized"})
+		return
+	}
+
+	var user models.User
+	db.DB.First(&user, requestedId)
+
+	if user.ID == 0 {
+		c.JSON(404, gin.H{"error": "User not found"})
+		return
+	}
+
+	var modules []models.Module
+	db.DB.Where("user_id = ?", user.ID).Find(&modules)
+
+	var grades []models.Grade
+	db.DB.Where("user_id = ?", user.ID).Find(&grades)
+
+	c.JSON(200, gin.H{"user": user, "modules": modules, "grades": grades})
 }
