@@ -21,6 +21,8 @@ func main() {
 
 	r.POST("/api/module", middleware.Auth, controllers.CreateModule)
 
+	r.GET("/api/spotify/current", controllers.GetCurrentOrLast)
+
 	r.Static("/assets", "./client/dist/assets")
 	r.StaticFile("/", "./client/dist/index.html")
 
