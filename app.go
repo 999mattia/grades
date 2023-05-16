@@ -1,13 +1,24 @@
 package main
 
 import (
+	"fmt"
+	"os"
+
 	"github.com/999mattia/grades/controllers"
 	"github.com/999mattia/grades/db"
 	"github.com/999mattia/grades/middleware"
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	err := godotenv.Load(".env")
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("test: ", os.Getenv("TEST"))
+
 	db.Connect()
 
 	//db.Migrate()
