@@ -3,6 +3,7 @@ package db
 import (
 	"fmt"
 	"log"
+	"os"
 
 	"github.com/999mattia/grades/models"
 	"gorm.io/driver/postgres"
@@ -14,7 +15,7 @@ var DB *gorm.DB
 func Connect() {
 	fmt.Println("Connection to database...")
 
-	db, err := gorm.Open(postgres.Open("postgres://jwnybpvo:tvKkBSR1LoQiQSBtsw5IA2o9bUNfTXuY@kandula.db.elephantsql.com/jwnybpvo"), &gorm.Config{})
+	db, err := gorm.Open(postgres.Open(os.Getenv("DB_URL")), &gorm.Config{})
 
 	if err != nil {
 		log.Fatal(err)

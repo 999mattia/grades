@@ -1,9 +1,6 @@
 package main
 
 import (
-	"fmt"
-	"os"
-
 	"github.com/999mattia/grades/controllers"
 	"github.com/999mattia/grades/db"
 	"github.com/999mattia/grades/middleware"
@@ -16,8 +13,6 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-
-	fmt.Println("test: ", os.Getenv("TEST"))
 
 	db.Connect()
 
