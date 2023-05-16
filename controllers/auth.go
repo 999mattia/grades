@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"os"
 	"time"
 
 	"github.com/999mattia/grades/db"
@@ -71,7 +72,7 @@ func Login(c *gin.Context) {
 		"exp": time.Now().Add(time.Hour).Unix(),
 	})
 
-	tokenString, err := token.SignedString([]byte("thisismysecret"))
+	tokenString, err := token.SignedString([]byte(os.Getenv("SECRET")))
 
 	if err != nil {
 		c.JSON(500, gin.H{"error": "Failed to generate token"})

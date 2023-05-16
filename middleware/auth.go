@@ -2,6 +2,7 @@ package middleware
 
 import (
 	"fmt"
+	"os"
 	"time"
 
 	"github.com/999mattia/grades/db"
@@ -23,7 +24,7 @@ func Auth(c *gin.Context) {
 			return nil, fmt.Errorf("Unexpected signing method: %v", token.Header["alg"])
 		}
 
-		return []byte("thisismysecret"), nil
+		return []byte(os.Getenv("SECRET")), nil
 	})
 
 	if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
