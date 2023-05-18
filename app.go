@@ -31,8 +31,5 @@ func main() {
 
 	r.GET("/api/spotify/current", controllers.GetCurrentOrLast)
 
-	r.Static("/assets", "./client/dist/assets")
-	r.StaticFile("/", "./client/dist/index.html")
-
 	r.Run()
 }
