@@ -34,6 +34,20 @@ function Login() {
 
 	return (
 		<>
+			<input
+				name="name"
+				placeholder="Name"
+				value={user.name}
+				onChange={handleChange}
+			></input>
+
+			<input
+				name="password"
+				placeholder="Password"
+				value={user.password}
+				onChange={handleChange}
+			></input>
+
 			<button onClick={() => handleLogin()}>Login</button>
 		</>
 	);
