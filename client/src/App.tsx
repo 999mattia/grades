@@ -12,7 +12,7 @@ function App() {
 			if (!localStorage.getItem("token")) {
 				navigate("/login");
 			}
-		}, 1000);
+		}, 500);
 		return () => clearInterval(interval);
 	}, []);
 
