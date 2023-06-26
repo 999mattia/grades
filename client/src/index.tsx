@@ -4,6 +4,7 @@ import "./styles/index.css";
 import App from "./App";
 import Login from "./Login";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import useSession from "./lib/session";
 
 const router = createBrowserRouter([
 	{

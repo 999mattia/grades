@@ -29,7 +29,5 @@ func main() {
 
 	r.POST("/api/module", middleware.Auth, controllers.CreateModule)
 
-	r.GET("/api/spotify/current", controllers.GetCurrentOrLast)
-
 	r.Run()
 }
