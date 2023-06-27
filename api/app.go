@@ -22,12 +22,12 @@ func main() {
 
 	r.Use(middleware.CORS)
 
-	r.POST("/api/signup", controllers.SignUp)
-	r.POST("/api/login", controllers.Login)
+	r.POST("/signup", controllers.SignUp)
+	r.POST("/login", controllers.Login)
 
-	r.GET("/api/user/:id", middleware.Auth, controllers.GetUserById)
+	r.GET("/user/:id", middleware.Auth, controllers.GetUserById)
 
-	r.POST("/api/module", middleware.Auth, controllers.CreateModule)
+	r.POST("/module", middleware.Auth, controllers.CreateModule)
 
 	r.Run()
 }
