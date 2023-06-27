@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { LoginData } from './models';
+import { DecodedToken, LoginData } from './models';
+import jwt_decode from 'jwt-decode';
 
 @Injectable({
 	providedIn: 'root',
@@ -15,5 +16,38 @@ export class AuthService {
 			.subscribe((res: any) => {
 				localStorage.setItem('access_token', res.token);
 			});
+	}
+
+	getToken(): string {
+		return localStorage.getItem('access_token') || '';
+	}
+
+	getCurrentUser() {
+		const decoded: DecodedToken = jwt_decode(
+			localStorage.getItem('access_token')!
+		);
+		return decoded.sub;
+	}
+
+	getExpiration() {
+		const decoded: DecodedToken = jwt_decode(
+			localStorage.getItem('access_token')!
+		);
+		return decoded.exp;
+	}
+
+	getCurrentTimestamp() {
+		return Math.floor(Date.now() / 1000);
+	}
+
+	public isLoggedIn() {
+		if (!localStorage.getItem('access_token')) {
+			return false;
+		}
+		if (this.getCurrentTimestamp() < this.getExpiration()) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
