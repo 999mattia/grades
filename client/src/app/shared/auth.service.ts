@@ -18,6 +18,11 @@ export class AuthService {
 			});
 	}
 
+	logOut() {
+		localStorage.removeItem('access_token');
+		this.router.navigate(['login']);
+	}
+
 	getToken(): string {
 		return localStorage.getItem('access_token') || '';
 	}

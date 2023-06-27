@@ -10,9 +10,16 @@ import { UserData } from '../shared/models';
 export class HomeComponent {
 	constructor(private userService: UserService) {}
 
+	data: UserData = {
+		id: 0,
+		name: '',
+		modules: [],
+	};
+
 	ngOnInit(): void {
-		this.userService
-			.getUserData()
-			.subscribe((data: UserData) => console.log(data));
+		this.userService.getUserData().subscribe((data: UserData) => {
+			this.data = data;
+			console.log(this.data);
+		});
 	}
 }
