@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../shared/auth.service';
 import { Router } from '@angular/router';
+import { LoginData } from '../shared/models';
 
 @Component({
 	selector: 'app-login',
@@ -9,21 +9,11 @@ import { Router } from '@angular/router';
 	styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-	loginForm: FormGroup;
-
-	constructor(
-		private fb: FormBuilder,
-		private authService: AuthService,
-		private router: Router
-	) {
-		this.loginForm = this.fb.group({
-			name: '',
-			password: '',
-		});
-	}
+	user: LoginData = { name: '', password: '' };
+	constructor(private authService: AuthService, private router: Router) {}
 
 	onSubmit() {
-		this.authService.logIn(this.loginForm.value);
+		this.authService.logIn(this.user);
 		this.router.navigate(['/']);
 	}
 }

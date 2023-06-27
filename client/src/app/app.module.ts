@@ -6,8 +6,13 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
 	declarations: [AppComponent, LoginComponent, HomeComponent],
@@ -17,6 +22,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 		HttpClientModule,
 		ReactiveFormsModule,
 		BrowserAnimationsModule,
+		MatToolbarModule,
+		MatIconModule,
+		MatButtonModule,
+		MatInputModule,
+		MatFormFieldModule,
+		FormsModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],
