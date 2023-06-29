@@ -23,7 +23,8 @@ export class HomeComponent {
 	fetchUserData() {
 		this.userService.getUserData().subscribe((data: UserData) => {
 			this.data = data;
-			console.log(this.data);
+			console.log(this.data.id);
+			console.log(this.data.name);
 			console.log(this.data.modules);
 		});
 	}

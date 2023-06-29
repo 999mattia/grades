@@ -1,6 +1,17 @@
-<mat-card *ngFor="let module of data.modules">
-	<mat-card-header>
-		<mat-card-title>{{ module.name }}</mat-card-title>
-	</mat-card-header>
-	<mat-card-content> </mat-card-content>
-</mat-card>
+<div style="display: flex; justify-content: center">
+	<mat-card
+		*ngFor="let module of data.modules"
+		style="
+			max-width: 750px;
+			width: 100%;
+			margin-left: 2rem;
+			margin-right: 2rem;
+		"
+	>
+		<mat-card-header>
+			<mat-card-title>{{ module.name }}</mat-card-title>
+		</mat-card-header>
+		<mat-card-content> </mat-card-content>
+	</mat-card>
+	<br />
+</div>

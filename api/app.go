@@ -29,5 +29,7 @@ func main() {
 
 	r.POST("/module", middleware.Auth, controllers.CreateModule)
 
+	r.POST("/module/:id/grade", middleware.Auth, controllers.CreateGrade)
+
 	r.Run()
 }
