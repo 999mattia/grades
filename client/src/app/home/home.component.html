@@ -1,17 +1,30 @@
-<div style="display: flex; justify-content: center">
+<div
+	*ngFor="let module of data.modules"
+	style="display: flex; justify-content: center"
+>
 	<mat-card
-		*ngFor="let module of data.modules"
 		style="
 			max-width: 750px;
 			width: 100%;
 			margin-left: 2rem;
 			margin-right: 2rem;
+			margin-bottom: 2rem;
 		"
 	>
 		<mat-card-header>
 			<mat-card-title>{{ module.name }}</mat-card-title>
+			<mat-card-subtitle>Average</mat-card-subtitle>
 		</mat-card-header>
-		<mat-card-content> </mat-card-content>
+		<mat-card-content>
+			<span *ngFor="let grade of module.grades">
+				{{ grade.name }}: {{ grade.grade }}<br />
+				<mat-divider></mat-divider>
+			</span>
+		</mat-card-content>
+		<mat-card-actions
+			><button mat-raised-button color="primary">
+				Add Grade
+			</button></mat-card-actions
+		>
 	</mat-card>
-	<br />
 </div>
