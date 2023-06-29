@@ -10,7 +10,6 @@ func CreateModule(c *gin.Context) {
 	var body struct {
 		Name     string
 		Semester int
-		UserId   uint
 	}
 
 	if c.Bind(&body) != nil {
@@ -20,12 +19,7 @@ func CreateModule(c *gin.Context) {
 
 	user, _ := c.Get("user")
 
-	if user.(models.User).ID != body.UserId {
-		c.JSON(401, gin.H{"error": "Unauthorized"})
-		return
-	}
-
-	module := models.Module{Name: body.Name, Semester: body.Semester, UserId: body.UserId}
+	module := models.Module{Name: body.Name, Semester: body.Semester, UserId: user.(models.User).ID}
 
 	result := db.DB.Create(&module)
 
