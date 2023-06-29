@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from '../shared/user.service';
-import { UserData } from '../shared/models';
+import { Module, UserData } from '../shared/models';
+import { CalculateService } from '../shared/calculate.service';
 
 @Component({
 	selector: 'app-home',
@@ -8,7 +9,10 @@ import { UserData } from '../shared/models';
 	styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-	constructor(private userService: UserService) {}
+	constructor(
+		private userService: UserService,
+		private calculateService: CalculateService
+	) {}
 
 	data: UserData = {
 		id: 0,
@@ -27,5 +31,9 @@ export class HomeComponent {
 			console.log(this.data.name);
 			console.log(this.data.modules);
 		});
+	}
+
+	calculateAverage(module: Module): number {
+		return this.calculateService.calculateAverageForModule(module);
 	}
 }

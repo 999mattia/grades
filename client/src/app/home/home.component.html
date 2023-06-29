@@ -13,7 +13,9 @@
 	>
 		<mat-card-header>
 			<mat-card-title>{{ module.name }}</mat-card-title>
-			<mat-card-subtitle>Average</mat-card-subtitle>
+			<mat-card-subtitle>{{
+				calculateAverage(module)
+			}}</mat-card-subtitle>
 		</mat-card-header>
 		<mat-card-content>
 			<span *ngFor="let grade of module.grades">

@@ -11,14 +11,14 @@ export interface DecodedToken {
 export interface UserData {
 	id: number;
 	name: string;
-	modules?: Module[];
+	modules: Module[];
 }
 
 export interface Module {
 	id: number;
 	name: string;
 	semester: number;
-	grades?: Grade[];
+	grades: Grade[];
 }
 
 export interface Grade {
