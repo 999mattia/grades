@@ -17,9 +17,14 @@ export class HomeComponent {
 	};
 
 	ngOnInit(): void {
+		this.fetchUserData();
+	}
+
+	fetchUserData() {
 		this.userService.getUserData().subscribe((data: UserData) => {
 			this.data = data;
 			console.log(this.data);
+			console.log(this.data.modules);
 		});
 	}
 }

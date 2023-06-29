@@ -4,14 +4,14 @@ import "gorm.io/gorm"
 
 type Module struct {
 	gorm.Model
-	Name     string
-	Semester int
-	UserId   uint
+	Name     string `json:"name"`
+	Semester int `json:"semester"`
+	UserId   uint `json:"userId"`
 }
 
 type ModuleDTO struct {
-	Id       uint
-	Name     string
-	Semester int
-	Grades   []GradeDTO
+	Id       uint `json:"id"`
+	Name     string `json:"name"`
+	Semester int `json:"semester"`
+	Grades   []GradeDTO `json:"grades"`
 }

@@ -4,15 +4,15 @@ import "gorm.io/gorm"
 
 type Grade struct {
 	gorm.Model
-	Name     string
-	Grade    float32
-	ModuleId uint
-	UserId   uint
+	Name     string `json:"name"`
+	Grade    float32 `json:"grade"`
+	ModuleId uint `json:"moduleId"`
+	UserId   uint `json:"userId"`
 }
 
 type GradeDTO struct {
-	Id       uint
-	Name     string
-	Grade    float32
-	ModuleId uint
+	Id       uint `json:"id"`
+	Name     string `json:"name"`
+	Grade    float32 `json:"grade"`
+	ModuleId uint 	`json:"moduleId"`
 }
