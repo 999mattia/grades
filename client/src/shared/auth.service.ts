@@ -34,6 +34,15 @@ export class AuthService {
 		return decoded.sub;
 	}
 
+	getCurrentUsername() {
+		if (!this.isLoggedIn()) {
+			return;
+		}
+		return this.http.get<any>(
+			`https://api.grades.mattiag.ch/user/${this.getCurrentUser()}/username`
+		);
+	}
+
 	getExpiration() {
 		const decoded: DecodedToken = jwt_decode(
 			localStorage.getItem('access_token')!
@@ -45,7 +54,7 @@ export class AuthService {
 		return Math.floor(Date.now() / 1000);
 	}
 
-	public isLoggedIn() {
+	isLoggedIn() {
 		if (!localStorage.getItem('access_token')) {
 			return false;
 		}
