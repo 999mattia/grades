@@ -18,14 +18,12 @@
 			}}</mat-card-subtitle>
 		</mat-card-header>
 		<mat-card-content>
-			<span *ngFor="let grade of module.grades">
-				{{ grade.name }}: {{ grade.grade }}<br />
-				<mat-divider></mat-divider>
-			</span>
+			<app-grade-table [grades]="module.grades"></app-grade-table>
 		</mat-card-content>
 		<mat-card-actions
-			><button mat-raised-button color="primary">
-				Add Grade
+			><button mat-raised-button color="primary">Add Grade</button>
+			<button mat-raised-button color="warn">
+				Delete Module
 			</button></mat-card-actions
 		>
 	</mat-card>

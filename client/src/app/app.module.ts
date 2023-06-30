@@ -17,9 +17,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
+import { GradeTableComponent } from './home/grade-table/grade-table.component';
 
 @NgModule({
-	declarations: [AppComponent, LoginComponent, HomeComponent],
+	declarations: [AppComponent, LoginComponent, HomeComponent, GradeTableComponent],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
@@ -36,6 +37,7 @@ import { MatTableModule } from '@angular/material/table';
 		MatCardModule,
 		MatListModule,
 		MatTableModule,
+		MatIconModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],
