@@ -15,7 +15,7 @@ const routes: Routes = [
 		canActivate: [AuthGuard],
 	},
 	{
-		path: 'module/:id/create',
+		path: 'module/:id/grade/create',
 		component: CreateGradeComponent,
 		canActivate: [AuthGuard],
 	},

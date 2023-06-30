@@ -10,11 +10,11 @@ import (
 
 func CreateGrade(c *gin.Context) {
 	moduleId, _ := strconv.Atoi(c.Param("id"))
-	tokenUser,_ := c.Get("user")
+	tokenUser, _ := c.Get("user")
 
 	var body struct {
-		Name     string
-		Grade   float32	
+		Name  string
+		Grade float32
 	}
 
 	if c.Bind(&body) != nil {
@@ -42,7 +42,7 @@ func CreateGrade(c *gin.Context) {
 	if result.Error != nil {
 		c.JSON(500, gin.H{"error": "Failed to create grade"})
 		return
-	}	
+	}
 
 	c.JSON(200, gin.H{"message": "Grade created"})
 }

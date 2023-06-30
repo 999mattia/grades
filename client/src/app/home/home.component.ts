@@ -46,4 +46,8 @@ export class HomeComponent {
 			this.fetchUserData();
 		});
 	}
+
+	handleCreateGrade(moduleId: number) {
+		this.router.navigate([`module/${moduleId}/grade/create`]);
+	}
 }

@@ -1,1 +1,40 @@
-<p>create-grade works!</p>
+<div style="display: flex; justify-content: center">
+	<form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+		<mat-form-field>
+			<mat-label>Name</mat-label>
+			<input
+				matInput
+				id="name"
+				type="text"
+				name="name"
+				[(ngModel)]="grade.name"
+				required
+			/>
+		</mat-form-field>
+		<br />
+		<mat-form-field>
+			<mat-label>Grade</mat-label>
+			<input
+				matInput
+				id="semester"
+				name="semester"
+				type="number"
+				[(ngModel)]="grade.grade"
+				required
+			/>
+		</mat-form-field>
+
+		<br />
+
+		<div style="display: flex; justify-content: center">
+			<button
+				mat-raised-button
+				color="primary"
+				type="submit"
+				[disabled]="loginForm.form.invalid"
+			>
+				Create Grade
+			</button>
+		</div>
+	</form>
+</div>

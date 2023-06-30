@@ -31,3 +31,9 @@ export interface CreateModuleModel {
 	name: string;
 	semester: number | null;
 }
+
+export interface CreateGradeModel {
+	name: string;
+	moduleId: number;
+	grade: number | null;
+}
