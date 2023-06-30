@@ -18,9 +18,18 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { GradeTableComponent } from './home/grade-table/grade-table.component';
+import { CreateModuleComponent } from './create-module/create-module.component';
+import { CreateGradeComponent } from './create-grade/create-grade.component';
 
 @NgModule({
-	declarations: [AppComponent, LoginComponent, HomeComponent, GradeTableComponent],
+	declarations: [
+		AppComponent,
+		LoginComponent,
+		HomeComponent,
+		GradeTableComponent,
+		CreateModuleComponent,
+		CreateGradeComponent,
+	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
