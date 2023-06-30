@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Grade } from 'src/shared/models';
 import { GradeService } from 'src/shared/grade.service';
+import { EventEmitter } from '@angular/core';
 
 @Component({
 	selector: 'app-grade-table',
@@ -9,6 +10,7 @@ import { GradeService } from 'src/shared/grade.service';
 })
 export class GradeTableComponent {
 	@Input() grades: Grade[] = [];
+	@Output() reload = new EventEmitter<void>();
 
 	displayedColumns: string[] = ['name', 'grade', 'actions'];
 	dataSource: MatTableDataSource<Grade>;
@@ -20,8 +22,7 @@ export class GradeTableComponent {
 
 	handleDeleteGrade(id: number) {
 		this.gradeService.deleteGrade(id).subscribe(() => {
-			this.grades = this.grades.filter((grade) => grade.id !== id);
-			this.dataSource.data = this.grades;
+			this.reload.emit();
 		});
 	}
 }

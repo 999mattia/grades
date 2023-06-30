@@ -21,7 +21,10 @@
 			style="margin-top: 1rem; margin-bottom: 1rem"
 			*ngIf="module.grades != null"
 		>
-			<app-grade-table [grades]="module.grades"></app-grade-table>
+			<app-grade-table
+				[grades]="module.grades"
+				(reload)="fetchUserData()"
+			></app-grade-table>
 		</mat-card-content>
 		<mat-card-actions
 			><button
