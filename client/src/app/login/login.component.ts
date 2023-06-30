@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../shared/auth.service';
+import { AuthService } from '../../shared/auth.service';
 import { Router } from '@angular/router';
-import { LoginData } from '../shared/models';
+import { LoginData } from '../../shared/models';
 
 @Component({
 	selector: 'app-login',

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { UserService } from '../shared/user.service';
-import { Module, UserData } from '../shared/models';
-import { CalculateService } from '../shared/calculate.service';
+import { UserService } from '../../shared/user.service';
+import { Module, UserData } from '../../shared/models';
+import { CalculateService } from '../../shared/calculate.service';
 
 @Component({
 	selector: 'app-home',
