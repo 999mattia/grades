@@ -17,11 +17,17 @@
 				calculateAverage(module)
 			}}</mat-card-subtitle>
 		</mat-card-header>
-		<mat-card-content>
+		<mat-card-content style="margin-top: 1rem; margin-bottom: 1rem">
 			<app-grade-table [grades]="module.grades"></app-grade-table>
 		</mat-card-content>
 		<mat-card-actions
-			><button mat-raised-button color="primary">Add Grade</button>
+			><button
+				mat-raised-button
+				color="primary"
+				style="margin-right: 1rem"
+			>
+				Add Grade
+			</button>
 			<button mat-raised-button color="warn">
 				Delete Module
 			</button></mat-card-actions
