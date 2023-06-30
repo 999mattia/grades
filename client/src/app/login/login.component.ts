@@ -14,6 +14,5 @@ export class LoginComponent {
 
 	onSubmit() {
 		this.authService.logIn(this.user);
-		this.router.navigate(['/']);
 	}
 }
