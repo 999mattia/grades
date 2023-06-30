@@ -6,6 +6,7 @@ import (
 	"github.com/999mattia/grades/db"
 	"github.com/999mattia/grades/models"
 	"github.com/gin-gonic/gin"
+	"gorm.io/gorm"
 )
 
 func CreateGrade(c *gin.Context) {
@@ -45,4 +46,28 @@ func CreateGrade(c *gin.Context) {
 	}
 
 	c.JSON(200, gin.H{"message": "Grade created"})
+}
+
+func DeleteGrade(c *gin.Context) {
+	id := c.Param("id")
+
+	var grade models.Grade
+
+	if err := db.DB.First(&grade, id).Error; err != nil {
+		if err == gorm.ErrRecordNotFound {
+			c.JSON(404, gin.H{"error": "Grade not found"})
+			return
+		}
+	}
+
+	tokenUser, _ := c.Get("user")
+
+	if grade.UserId != tokenUser.(models.User).ID {
+		c.JSON(401, gin.H{"error": "Unauthorized"})
+		return
+	}
+
+	db.DB.Delete(&grade)
+
+	c.JSON(200, gin.H{"message": "Grade deleted"})
 }

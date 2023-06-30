@@ -23,4 +23,17 @@ export class GradeService {
 			options
 		);
 	}
+
+	deleteGrade(id: number) {
+		const headers = new HttpHeaders({
+			Authorization: this.authService.getToken(),
+		});
+
+		const options = { headers: headers };
+
+		return this.http.delete(
+			`https://api.grades.mattiag.ch/grade/${id}`,
+			options
+		);
+	}
 }

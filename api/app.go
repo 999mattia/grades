@@ -32,6 +32,7 @@ func main() {
 	r.DELETE("/module/:id", middleware.Auth, controllers.DeleteModule)
 
 	r.POST("/module/:id/grade", middleware.Auth, controllers.CreateGrade)
+	r.DELETE("/grade/:id", middleware.Auth, controllers.DeleteGrade)
 
 	r.Run()
 }
