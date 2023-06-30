@@ -1,1 +1,40 @@
-<p>create-module works!</p>
+<div style="display: flex; justify-content: center">
+	<form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+		<mat-form-field>
+			<mat-label>Name</mat-label>
+			<input
+				matInput
+				id="name"
+				type="text"
+				name="name"
+				[(ngModel)]="module.name"
+				required
+			/>
+		</mat-form-field>
+		<br />
+		<mat-form-field>
+			<mat-label>Semester</mat-label>
+			<input
+				matInput
+				id="semester"
+				name="semester"
+				type="number"
+				[(ngModel)]="module.semester"
+				required
+			/>
+		</mat-form-field>
+
+		<br />
+
+		<div style="display: flex; justify-content: center">
+			<button
+				mat-raised-button
+				color="primary"
+				type="submit"
+				[disabled]="loginForm.form.invalid"
+			>
+				Create Module
+			</button>
+		</div>
+	</form>
+</div>

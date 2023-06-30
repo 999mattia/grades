@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UserService } from '../../shared/user.service';
 import { Module, UserData } from '../../shared/models';
 import { CalculateService } from '../../shared/calculate.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-home',
@@ -10,7 +11,8 @@ import { CalculateService } from '../../shared/calculate.service';
 export class HomeComponent {
 	constructor(
 		private userService: UserService,
-		private calculateService: CalculateService
+		private calculateService: CalculateService,
+		private router: Router
 	) {}
 
 	data: UserData = {
@@ -34,5 +36,10 @@ export class HomeComponent {
 
 	calculateAverage(module: Module): number {
 		return this.calculateService.calculateAverageForModule(module);
+	}
+
+	handleCreateModule() {
+		console.log('create module');
+		this.router.navigate(['create/module']);
 	}
 }

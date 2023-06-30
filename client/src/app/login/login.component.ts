@@ -10,7 +10,7 @@ import { LoginData } from '../../shared/models';
 })
 export class LoginComponent {
 	user: LoginData = { name: '', password: '' };
-	constructor(private authService: AuthService, private router: Router) {}
+	constructor(private authService: AuthService) {}
 
 	onSubmit() {
 		this.authService.logIn(this.user);
