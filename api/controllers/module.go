@@ -4,6 +4,7 @@ import (
 	"github.com/999mattia/grades/db"
 	"github.com/999mattia/grades/models"
 	"github.com/gin-gonic/gin"
+	"gorm.io/gorm"
 )
 
 func CreateModule(c *gin.Context) {
@@ -28,4 +29,28 @@ func CreateModule(c *gin.Context) {
 	}
 
 	c.JSON(200, gin.H{"message": "Module created"})
+}
+
+func DeleteModule(c *gin.Context) {
+	id := c.Param("id")
+
+	var module models.Module
+
+	if err := db.DB.First(&module, id).Error; err != nil {
+		if err == gorm.ErrRecordNotFound {
+			c.JSON(404, gin.H{"error": "Module not found"})
+			return
+		}
+	}
+
+	user, _ := c.Get("user")
+
+	if module.UserId != user.(models.User).ID {
+		c.JSON(403, gin.H{"error": "You don't own this module"})
+		return
+	}
+
+	db.DB.Delete(&module)
+
+	c.JSON(200, gin.H{"message": "Module deleted"})
 }

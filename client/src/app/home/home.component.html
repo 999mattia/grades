@@ -31,7 +31,11 @@
 			>
 				Add Grade
 			</button>
-			<button mat-raised-button color="warn">
+			<button
+				mat-raised-button
+				color="warn"
+				(click)="handleDeleteModule(module.id)"
+			>
 				Delete Module
 			</button></mat-card-actions
 		>

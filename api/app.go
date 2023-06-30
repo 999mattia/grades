@@ -29,6 +29,7 @@ func main() {
 	r.GET("/user/:id/username", controllers.GetUsernameById)
 
 	r.POST("/module", middleware.Auth, controllers.CreateModule)
+	r.DELETE("/module/:id", middleware.Auth, controllers.DeleteModule)
 
 	r.POST("/module/:id/grade", middleware.Auth, controllers.CreateGrade)
 

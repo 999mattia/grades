@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UserService } from '../../shared/user.service';
 import { Module, UserData } from '../../shared/models';
 import { CalculateService } from '../../shared/calculate.service';
+import { ModuleService } from '../../shared/module.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,6 +13,7 @@ export class HomeComponent {
 	constructor(
 		private userService: UserService,
 		private calculateService: CalculateService,
+		private moduleService: ModuleService,
 		private router: Router
 	) {}
 
@@ -37,5 +39,11 @@ export class HomeComponent {
 
 	handleCreateModule() {
 		this.router.navigate(['create/module']);
+	}
+
+	handleDeleteModule(id: number) {
+		this.moduleService.deleteModule(id).subscribe(() => {
+			this.fetchUserData();
+		});
 	}
 }
