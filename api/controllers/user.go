@@ -55,3 +55,17 @@ func GetUserById(c *gin.Context) {
 
 	c.JSON(200, userDTO)
 }
+
+func GetUsernameById(c *gin.Context) {
+	requestedId := c.Param("id")
+
+	var user models.User
+	db.DB.First(&user, requestedId)
+
+	if user.ID == 0 {
+		c.JSON(404, gin.H{"error": "User not found"})
+		return
+	}
+
+	c.JSON(200, gin.H{"username": user.Name})
+}

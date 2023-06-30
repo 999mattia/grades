@@ -26,6 +26,7 @@ func main() {
 	r.POST("/login", controllers.Login)
 
 	r.GET("/user/:id", middleware.Auth, controllers.GetUserById)
+	r.GET("/user/:id/username", controllers.GetUsernameById)
 
 	r.POST("/module", middleware.Auth, controllers.CreateModule)
 
