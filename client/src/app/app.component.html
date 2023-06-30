@@ -12,7 +12,15 @@
 			"
 		>
 			<span>Grades</span>
-			<span>{{ username }}</span>
+			<span
+				><button
+					mat-button
+					*ngIf="username != ''"
+					(click)="handleLogout()"
+				>
+					{{ username }}
+				</button></span
+			>
 		</div>
 	</mat-toolbar>
 </p>

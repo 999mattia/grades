@@ -14,9 +14,14 @@ export class AppComponent {
 
 	handleLogout() {
 		this.authService.logOut();
+		this.username = '';
 	}
 
 	ngOnInit(): void {
+		this.authService.getCurrentUsername()?.subscribe((res: any) => {
+			this.username = res.username;
+		});
+
 		interval(1000).subscribe(() => {
 			if (!this.authService.isLoggedIn()) {
 				this.username = '';
