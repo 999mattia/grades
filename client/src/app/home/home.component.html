@@ -13,11 +13,14 @@
 	>
 		<mat-card-header>
 			<mat-card-title>{{ module.name }}</mat-card-title>
-			<mat-card-subtitle>{{
+			<mat-card-subtitle *ngIf="module.grades != null">{{
 				calculateAverage(module)
 			}}</mat-card-subtitle>
 		</mat-card-header>
-		<mat-card-content style="margin-top: 1rem; margin-bottom: 1rem">
+		<mat-card-content
+			style="margin-top: 1rem; margin-bottom: 1rem"
+			*ngIf="module.grades != null"
+		>
 			<app-grade-table [grades]="module.grades"></app-grade-table>
 		</mat-card-content>
 		<mat-card-actions
