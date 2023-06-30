@@ -38,7 +38,7 @@ export class HomeComponent {
 	}
 
 	handleCreateModule() {
-		this.router.navigate(['create/module']);
+		this.router.navigate(['module/create']);
 	}
 
 	handleDeleteModule(id: number) {
