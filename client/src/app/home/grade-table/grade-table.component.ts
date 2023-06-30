@@ -5,7 +5,6 @@ import { Grade } from 'src/app/shared/models';
 @Component({
 	selector: 'app-grade-table',
 	templateUrl: './grade-table.component.html',
-	styleUrls: ['./grade-table.component.css'],
 })
 export class GradeTableComponent {
 	@Input() grades: Grade[] = [];
