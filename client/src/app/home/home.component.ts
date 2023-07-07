@@ -4,6 +4,7 @@ import { Module, UserData } from '../../shared/models';
 import { CalculateService } from '../../shared/calculate.service';
 import { ModuleService } from '../../shared/module.service';
 import { Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
 
 @Component({
 	selector: 'app-home',
@@ -15,7 +16,17 @@ export class HomeComponent {
 		private calculateService: CalculateService,
 		private moduleService: ModuleService,
 		private router: Router
-	) {}
+	) {
+		this.semester.valueChanges.subscribe((value) => {
+			if (value == undefined) {
+				this.modulesToShow = this.data.modules;
+			} else {
+				this.modulesToShow = this.data.modules.filter(
+					(module) => module.semester == +value
+				);
+			}
+		});
+	}
 
 	data: UserData = {
 		id: 0,
@@ -23,8 +34,13 @@ export class HomeComponent {
 		modules: [],
 	};
 
+	semester = new FormControl('');
+
+	modulesToShow: Module[] = [];
+
 	ngOnInit(): void {
 		this.fetchUserData();
+		this.modulesToShow = this.data.modules;
 	}
 
 	fetchUserData() {
